@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MvcWeb.Models.Producto>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <h1>PointerSkins</h1>
+    </div>
+    <div class="row">
+        <h2>Destacado</h2>
+        <div class="col-md-12">
+            @foreach (var item in Model)
+                {
+                    <div class="col-md-2">
+                        @Html.DisplayFor(modelItem => item.nombre)
+                        <img class="img-responsive" src="https://codigoesports.com/wp-content/uploads/2020/05/VANDAL-VALORANT.png" />
+                        @Html.DisplayFor(modelItem => item.stock)
+                        @Html.DisplayFor(modelItem => item.precio)
+                        @Html.DisplayFor(modelItem => item.descripcion)
+
+                    </div>
+                }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+</div>
