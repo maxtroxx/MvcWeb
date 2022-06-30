@@ -171,7 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MicarritoController.cs" />
+    <Compile Include="Controllers\MiCarritoController.cs" />
     <Compile Include="Controllers\ProductoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,6 +258,7 @@
     <Content Include="Views\Productoes\Edit.cshtml" />
     <Content Include="Views\Productoes\Index.cshtml" />
     <Content Include="Views\Home\_carrito.cshtml" />
+    <Content Include="Views\Micarrito\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206280525461_InitialCreate.resx">
@@ -280,9 +281,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Micarrito\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
