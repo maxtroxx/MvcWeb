@@ -8,9 +8,9 @@
 </div>
 
 <div class="container">
-    <h1>PointerSkins</h1>
     </div>
     <div class="row">
+        <h1>PointerSkins</h1>
         <h2>Destacado</h2>
         <div class="col-md-12">
             @foreach (var item in Model)
@@ -22,7 +22,7 @@
                         @Html.DisplayFor(modelItem => item.precio)
                         @Html.DisplayFor(modelItem => item.descripcion)
 
-                        @if (Request.IsAuthenticated)
+                        @if (Request.IsAuthenticated )
                         {
                             <button onclick="AddToCart(@item.Id)">Añadir al carrito</button>
                         }
