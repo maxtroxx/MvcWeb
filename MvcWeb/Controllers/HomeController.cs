@@ -28,7 +28,6 @@ namespace MvcWeb.Controllers
             Session["Carrito"] = productocarrito;
             return PartialView("_carrito");
 
-            
         }
 
         public ActionResult About()
