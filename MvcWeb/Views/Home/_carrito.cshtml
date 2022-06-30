@@ -1,6 +1,10 @@
-﻿<div class="row">
+﻿@using MvcWeb.Models;
+
+@{
+    List<Producto> productocarrito = (List<Producto>)Session["Carrito"];
+}
+<div class="row">
     <div class="col-12">
-        <span class="pull-right m-t-md"> <i class="glyphicon glyphicon-shopping-cart"></i>Mi Carrito <label class="label label-info">0</label> </span>
+        <span class="pull-right m-t-md"> <i class="glyphicon glyphicon-shopping-cart"></i>Mi Carrito <label class="label label-info"> @productocarrito.Count </label> </span>
     </div>
 </div>
-

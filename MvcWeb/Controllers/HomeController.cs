@@ -1,8 +1,7 @@
 ﻿using MvcWeb.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace MvcWeb.Controllers
@@ -10,9 +9,26 @@ namespace MvcWeb.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        public ActionResult Index()
+
+        public async Task<ActionResult> Index()
         {
-            return View(db.Productoes.ToList());
+            if (Session["Carrito"] == null)
+            {
+                Session["Carrito"] = new List<Producto>();
+            }
+
+            return View(await db.Productoes.ToListAsync());
+        }
+
+        public ActionResult AddToCart(int Id)
+        {
+            var productos = db.Productoes.Find(Id);
+            List<Producto> productocarrito = (List<Producto>)Session["Carrito"];
+            productocarrito.Add(productos);
+            Session["Carrito"] = productocarrito;
+            return PartialView("_carrito");
+
+            
         }
 
         public ActionResult About()
