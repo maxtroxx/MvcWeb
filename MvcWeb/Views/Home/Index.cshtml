@@ -3,7 +3,9 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_carrito")
+<div id="divCarrito">
+    @Html.Partial("_carrito")
+</div>
 
 <div class="container">
     <h1>PointerSkins</h1>
@@ -22,8 +24,7 @@
 
                         @if (Request.IsAuthenticated)
                         {
-
-                            <button>Añadir al carrito</button>
+                            <button onclick="AddToCart(@item.id)">Añadir al carrito</button>
                         }
 
                     </div>
