@@ -20,8 +20,9 @@
                         @Html.DisplayFor(modelItem => item.precio)
                         @Html.DisplayFor(modelItem => item.descripcion)
 
-                        @if (Request.IsAuthenticacted)
+                        @if (Request.IsAuthenticated)
                         {
+
                             <button>Añadir al carrito</button>
                         }
 
