@@ -8,44 +8,44 @@
 </div>
 
 <div class="container">
-    </div>
-    <div class="row">
-        <h1>PointerSkins</h1>
-        <h2>Destacado</h2>
-        <div class="col-md-12">
-            @foreach (var item in Model)
-                {
-                    <div class="col-md-2">
-                        @Html.DisplayFor(modelItem => item.nombre)
+</div>
+<div class="row">
+    <h1>PointerSkins</h1>
+    <h2>Destacado</h2>
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-2">
+                <div class="card" style="width: 18rem;">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre)</h5>
+                    <div class="card-body">
                         <img class="img-responsive" src="https://codigoesports.com/wp-content/uploads/2020/05/VANDAL-VALORANT.png" />
-                        @Html.DisplayFor(modelItem => item.stock)
-                        @Html.DisplayFor(modelItem => item.precio)
-                        @Html.DisplayFor(modelItem => item.descripcion)
-
-                        @if (Request.IsAuthenticated )
-                        {
-                            <button onclick="AddToCart(@item.Id)">Añadir al carrito</button>
-                        }
-
+                        <p class="card-text"> <Span class="text-">Stok:</Span>@Html.DisplayFor(modelItem => item.stock) Precio:@Html.DisplayFor(modelItem => item.precio) Detalles:@Html.DisplayFor(modelItem => item.descripcion) </p>
+                        <button onclick="AddToCart(@item.Id)" class="btn btn-primary">Añadir al carrito</button>
                     </div>
-                }
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-6"></div>
-            <div class="col-md-6"></div>
-        </div>
-    </div>
+                </div>
 
-    <script type="text/javascript">
 
-        function AddToCart(Id) {
-            axios.get('/Home/AddToCard?Id=' + Id).then(function (response) {
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+</div>
+@section scripts{
+    <script >
+
+        function AddToCart(id) {
+            axios.get('/Home/AddToCard?Id=' + id)
+                .then(function (response) {
                 var divCarrito = document.getElementById("divCarrito");
                 divCarrito.innerHTML = response.data;
-                Console.log(response);
+                console.log(response);
             })
         }
     </script>
-</div>
+}
