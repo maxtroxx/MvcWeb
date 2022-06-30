@@ -30,16 +30,6 @@ namespace MvcWeb.Controllers
 
         }
 
-        public Task<ActionResult> AddToCart(int id)
-        {
-            var productos = db.Productoes.ToList(id);
-            List<Producto> productocarrito = (List<Producto>)Session["Carrito"];
-            productocarrito.Add(Producto);
-            Session["Carrito"] = productocarrito;
-            return PartialView("_carrito");
-
-            
-        }
 
         public ActionResult About()
         {
