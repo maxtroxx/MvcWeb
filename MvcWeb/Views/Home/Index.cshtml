@@ -8,44 +8,68 @@
 </div>
 
 <div class="container">
-</div>
-<div class="row">
-    <h1>PointerSkins</h1>
-    <h2>Destacado</h2>
-    <div class="col-md-12">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-2">
-                <div class="card" style="width: 18rem;">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre)</h5>
-                    <div class="card-body">
-                        <img class="img-responsive" src="https://codigoesports.com/wp-content/uploads/2020/05/VANDAL-VALORANT.png" />
-                        <p class="card-text"> <Span class="text-">Stok:</Span>@Html.DisplayFor(modelItem => item.stock) Precio:@Html.DisplayFor(modelItem => item.precio) Detalles:@Html.DisplayFor(modelItem => item.descripcion) </p>
-                        <button onclick="AddToCart(@item.Id)" class="btn btn-primary">Añadir al carrito</button>
+    @*<div class="row">
+            <div id="my-pics" class="carrusel slide" data-ride="carousel" style="width:300px;margin:auto">
+                <ol class="carousel-indicators">
+                    <li data-target="#my-pics" data-slide-to="0" class="active"></li>
+                    <li data-target="#my-pics" data-slide-to="1"></li>
+                    <li data-target="#my-pics" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="item active">
+                        <img class="img-responsive" src="https://fpschampion.com/wp-content/uploads/2022/04/Glitchpop-Skin-1024x359.jpg" alt="Sunset over beach">
                     </div>
+
+                    <div class="item">
+                        <img class="img-responsive" src="https://valorantstrike.com/wp-content/uploads/Valorant-RGX-11Z-Pro-Collection-Vandal-Small.jpg" alt="Rob Roy Glacier">
+                    </div>
+
+                    <div class="item">
+                        <img class="img-responsive" src="https://valorantstrike.com/wp-content/uploads/Valorant-RGX-11Z-Pro-Collection-Vandal-Red.jpg" alt="Longtail boats at Phi Phi">
+                    </div>
+
                 </div>
-
-
+                <a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
             </div>
-        }
+        </div>*@
+    <div class="row">
+        <h1 class="bg-primary img-rounded text-center">PointerSkins</h1>
+        <h2>Destacado</h2>
+        <div class="col-md-12">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-2">
+                    <div class="card table-bordered text-center" style="width: 18rem;">
+                        <h5 class="card-title bg-danger text-capitalize ">@Html.DisplayFor(modelItem => item.nombre)</h5>
+                        <div class="card-body">
+                            <img class="img-responsive" src="https://codigoesports.com/wp-content/uploads/2020/05/VANDAL-VALORANT.png" />
+                            <p class="card-text">
+                                <Span class="text-uppercase text-info bg-success">Stok:</Span>@Html.DisplayFor(modelItem => item.stock)
+                                <Span class="text-uppercase text-info bg-success">Precio:</Span>@Html.DisplayFor(modelItem => item.precio)
+                                <Span class="text-uppercase text-info bg-success">Detalles:</Span>@Html.DisplayFor(modelItem => item.descripcion)
+                            </p>
+                            <button onclick="AddToCart(@item.Id)" class="btn btn-warning">Añadir al carrito</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="col-md-6"></div>
-        <div class="col-md-6"></div>
-    </div>
-</div>
+
 @section scripts{
-    <script >
+    <script>
 
         function AddToCart(id) {
             axios.get('/Home/AddToCard?Id=' + id)
                 .then(function (response) {
-                var divCarrito = document.getElementById("divCarrito");
-                divCarrito.innerHTML = response.data;
-                console.log(response);
-            })
+                    var divCarrito = document.getElementById("divCarrito");
+                    divCarrito.innerHTML = response.data;
+                    console.log(response);
+                })
         }
     </script>
 }
