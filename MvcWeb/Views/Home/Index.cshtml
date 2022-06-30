@@ -102,8 +102,8 @@
     @section scripts{
         <script>
 
-            function AddToCart(id) {
-                axios.get('/Home/AddToCard?Id=' + id)
+            function AddToCart(Id) {
+                axios.get('/Home/AddToCart?Id=' + Id)
                     .then(function (response) {
                         var divCarrito = document.getElementById("divCarrito");
                         divCarrito.innerHTML = response.data;
