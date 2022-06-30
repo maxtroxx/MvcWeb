@@ -37,4 +37,15 @@
             <div class="col-md-6"></div>
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        function AddToCart(Id) {
+            axios.get('/Home/AddToCard?Id=' + Id).then(function (response) {
+                var divCarrito = document.getElementById("divCarrito");
+                divCarrito.innerHTML = response.data;
+                Console.log(response);
+            })
+        }
+    </script>
 </div>
