@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <div class="container-fluid">
 
-            <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:1000px;margin:auto;">
+            <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:1110px;margin:auto;">
 
                 <ol class="carousel-indicators">
                     <li data-target="#my-pics" data-slide-to="0" class="active"></li>
@@ -27,23 +27,23 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img class="img-responsive" style="width: 1000px;height: 300px;" src="https://fpschampion.com/wp-content/uploads/2022/04/Glitchpop-Skin-1024x359.jpg" alt="phantom glitchpop">
+                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://fpschampion.com/wp-content/uploads/2022/04/Glitchpop-Skin-1024x359.jpg" alt="phantom glitchpop">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1000px;height: 300px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159054/prime_phantom_xdd.jpg" alt="phantom prime">
+                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159054/prime_phantom_xdd.jpg" alt="phantom prime">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1000px;height: 300px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159057/primevandal.jpg" alt="vandal prime">
+                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159057/primevandal.jpg" alt="vandal prime">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1000px;height: 300px;" src="https://pbs.twimg.com/media/EtJcH-VWMAAx_6i?format=jpg&name=small" alt="vandal glitchpop">
+                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://pbs.twimg.com/media/EtJcH-VWMAAx_6i?format=jpg&name=small" alt="vandal glitchpop">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1000px;height: 300px;" src="https://i.ytimg.com/vi/gnOoBAMHU-Y/maxresdefault.jpg" alt="vandal Reaver">
+                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://i.ytimg.com/vi/gnOoBAMHU-Y/maxresdefault.jpg" alt="vandal Reaver">
                     </div>
                 </div>
 
@@ -77,11 +77,11 @@
             <div class="col-md-12">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="height:250px;">
                         <div class="card table-bordered text-center" style="width: 18rem;">
                             <h5 class="card-title bg-danger text-capitalize ">@Html.DisplayFor(modelItem => item.nombre)</h5>
                             <div class="card-body">
-                                <img class="img-responsive" src="https://codigoesports.com/wp-content/uploads/2020/05/VANDAL-VALORANT.png" />
+                                <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.imagen)" />
                                 <p class="card-text">
                                     <Span class="text-uppercase text-info bg-success">Stok:</Span>@Html.DisplayFor(modelItem => item.stock)
                                     <Span class="text-uppercase text-info bg-success">Precio:</Span>@Html.DisplayFor(modelItem => item.precio)
