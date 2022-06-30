@@ -17,5 +17,6 @@ namespace MvcWeb.Models
         public int precio { get; set; }
         [DataType(DataType.MultilineText)]
         public string descripcion { get; set; }
+        public string imagen { get; set; }
     }
 }

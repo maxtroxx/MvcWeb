@@ -16,7 +16,6 @@ namespace MvcWeb.Controllers
             {
                 Session["Carrito"] = new List<Producto>();
             }
-
             return View(await db.Productoes.ToListAsync());
         }
 

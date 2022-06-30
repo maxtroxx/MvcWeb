@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="img-responsive" alt="Invoce Template" src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG59.png" />
+                            
                         </div>
                         <div class="col-md-8 text-right">
                             <h4 style="color: #F81D2D;"><strong>BBBootstrap</strong></h4>
@@ -47,8 +47,8 @@
                                 @foreach (var item in Session["Carrito"] as List<Producto>)
                                 {
                                     <tr>
-                                    <td class="col-md-9">@items.nombre</td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @items.precio </td>
+                                    <td class="col-md-9">@item.nombre</td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.precio </td>
                                     </tr>
                                   
                                 }
