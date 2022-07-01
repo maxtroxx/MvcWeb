@@ -44,14 +44,13 @@
                             <tbody>
                                 @foreach (var item in Session["Carrito"] as List<Producto>)
                                 {
-                                <tr>
-                                    <td class="col-md-3" id="ID">@item.Id</td>
-                                    <td class="col-md-3">@item.nombre</td>
-                                    <td class="col-md-3"><input type="number" name="stock" id="stock" value="1" min="1" max="@item.stock" onchange="CalcularTotal(); SumarTotal(); ActualizarStock(@item.Id)" /></td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i><p id="stockRestante"> @item.stock </p></td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> <p id="TotalCarrito">@item.precio.ToString("C0")</p></td>
-                                </tr>
-                                    
+                                    <tr>
+                                        <td class="col-md-3">@item.nombre</td>
+                                        <td class="col-md-3"><input type="number" id="stock" value="1" min="1" max="@item.stock" onchange="CalcularTotal(@item.Id); SumarTotal()"/></td>
+                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
+                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true" ></i> <p id="TotalCarrito">@item.precio.ToString("C0")</p></td>
+                                    </tr>
+
                                 }
                                 <tr>
                                     <td></td>
@@ -103,42 +102,21 @@
 
 @section scripts{
     <script>
-        function Actualizar() {
-            j
-        }
 
-        function CalcularTotal() {
-
-            var inputStock = $('[name="stock"]');
-            console.log(inputStock.value)
-            var divCarrito = $('[id="TotalCarrito"]');
-            var identificadores = $('[id="ID"]');
-
-            for (var x = 0; x < identificadores.length; x++) {
-                for (var i = 0; i < inputStock.length; i++) {
-                    for (var j = 0; j < divCarrito.length; j++) {
-                        console.log( "id",identificadores[x].innerHTML, "stock",inputStock[i].innerHTML,"div" ,divCarrito[j].innerHTML)
-                        axios.get('/MiCarrito/CalcularTotal?Id=' + identificadores[x].innerHTML + "&stock=" + inputStock[i].innerHTML)
-                                .then(function (response) {
-                                    divCarrito[j].innerHTML = response.data;
-                                })
-                    }
-                }
-            }
-
-        }
-        function ActualizarStock(id) {
+        function CalcularTotal(id) {
 
             var inputStock = document.getElementById("stock");
 
-            axios.get('/MiCarrito/ActualizarStock?Id=' + id + "&stock=" + inputStock.value)
-                .then(function (response) {
-                    var divCarrito = document.getElementById("stockRestante");
-                    console.log(divCarrito);
-                    divCarrito.innerHTML = response.data;
-                })
+            axios.get('/MiCarrito/CalcularTotal?Id=' + id + "&stock=" + inputStock.value)
+                    .then(function (response) {
+                        var divCarrito = document.getElementById("TotalCarrito");
+                        divCarrito.innerHTML = response.data;
+                    })
         }
         function SumarTotal() {
+            var valores = document.getElementById("TotalCarrito");
+            console.log(valores.innerHTML);
+            document.getElementById("total").value = valores.innerHTML;
 
             var totalInp = $('[id="TotalCarrito"]');
             console.log(totalInp[0].innerHTML.slice(1).replace(/[$.]/g, ''))
@@ -150,7 +128,6 @@
             document.getElementById("total").innerHTML = total
             
         }
-
 
     </script>
 }
