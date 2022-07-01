@@ -21,17 +21,13 @@
                             
                         </div>
                         <div class="col-md-8 text-right">
-                            <h4 style="color: #F81D2D;"><strong>BBBootstrap</strong></h4>
-                            <p>221 ,Baker Street</p>
-                            <p>1800-234-124</p>
-                            <p>example@gmail.com</p>
+                            <p>PointerSkins@gmail.com</p>
                         </div>
                     </div>
                     <br />
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <h2>Mi Carrito</h2>
-                            <h5>04854654101</h5>
                         </div>
                     </div>
                     <br />
@@ -40,48 +36,61 @@
                             <thead>
                                 <tr>
                                     <th><h5>Descripcion</h5></th>
+                                    <th><h5>Cantidad</h5></th>
+                                    <th><h5>Stock</h5></th>
                                     <th><h5>Sub-Total</h5></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Session["Carrito"] as List<Producto>)
                                 {
-                                    <tr>
-                                    <td class="col-md-9">@item.nombre</td>
+                                <tr>
+                                    <td class="col-md-3">@item.nombre</td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
                                     <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.precio </td>
-                                    </tr>
+                                </tr>
                                   
                                 }
-                                <tr>
-                                    <td class="text-right">
-                                        <p>
-                                            <strong>Shipment and Taxes:</strong>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right">
+                                    <p>
+                                        <strong>Total:</strong>
+                                    </p>
+                                    <p>
+                                        <strong>Total Amount: </strong>
+                                    </p>
+                                    <p>
+                                        <strong>Discount: </strong>
+                                    </p>
+                                    <p>
+                                        <strong>Payable Amount: </strong>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        @foreach (var item in Session["Carrito"] as List<Producto>)
+                                        {
+                                            var Total = 0;
+                                            var precio = 0;
+                                            precio = item.precio;
+                                            Total = Total + precio;
+                                            <strong><i class="fas fa-rupee-sign" area-hidden="true">@Total</i></strong>
+                                        }
                                         </p>
-                                        <p>
-                                            <strong>Total Amount: </strong>
-                                        </p>
-                                        <p>
-                                            <strong>Discount: </strong>
-                                        </p>
-                                        <p>
-                                            <strong>Payable Amount: </strong>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p>
-                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong>
-                                        </p>
-                                        <p>
-                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong>
-                                        </p>
-                                        <p>
-                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong>
-                                        </p>
-                                        <p>
-                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong>
-                                        </p>
-                                    </td>
-                                </tr>
+                                    <p>
+                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong>
+                                    </p>
+                                    <p>
+                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong>
+                                    </p>
+                                    <p>
+                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong>
+                                    </p>
+                                </td>
+                            </tr>
                                 <tr style="color: #F81D2D;">
                                     <td class="text-right"><h4><strong>Total:</strong></h4></td>
                                     <td class="text-left"><h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4></td>
