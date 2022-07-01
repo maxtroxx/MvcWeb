@@ -12,22 +12,23 @@
     <dl class="dl-horizontal">
         <dt>Contraseña:</dt>
         <dd>
-            [
+            
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Cambiar la contraseña", "ChangePassword")
+                @Html.ActionLink("Cambiar la Contraseña", "ChangePassword", null, new { @class = "btn btn-primary" })
+                //@Html.ActionLink("Cambiar la contraseña", "ChangePassword")
             }
             else
             {
                 @Html.ActionLink("Crear", "SetPassword")
             }
-            ]
-        </dd>
+            
+        </dd> <br />
         <dt>Inicios de sesión externos:</dt>
         <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Administrar", "ManageLogins") ]
-        </dd>
+            @Model.Logins.Count 
+            @Html.ActionLink("Administrar", "ManageLogins", null , new { @class = "btn btn-primary" })
+        </dd><br />
         @*
             Los números de teléfono se pueden usar como una segunda fase de comprobación en un sistema de autenticación en dos fases.
              
@@ -82,6 +83,6 @@
                         </text>
                     }
                 }*@
-        </dd>
+        </dd><br />
     </dl>
 </div>
