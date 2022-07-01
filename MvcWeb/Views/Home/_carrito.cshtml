@@ -3,8 +3,8 @@
 @{
     List<Producto> productocarrito = (List<Producto>)Session["Carrito"];
 }
-<div class="row">
+<div class="row" style="color: white;">
     <div class="col-12" >
-        <span class="pull-right m-t-md"> <i  class="glyphicon glyphicon-shopping-cart" style="font-size:20px;"></i>@Html.ActionLink("Mi carrito","Index", "Micarrito",null, new { @style = "text-decoration:none ;color:black;font-size:20px;" }) <label  class="label label-info" style="font-size:13px;"> @productocarrito.Count </label> </span>
+        <span class="pull-right m-t-md"> <i  class="glyphicon glyphicon-shopping-cart" style="margin-top: 10px; font-size:20px;"></i>@Html.ActionLink("Mi carrito","Index", "Micarrito",null, new { @style = "text-decoration:none ;color:White;font-size:20px;" }) <label  class="label label-info" style="font-size:13px;"> @productocarrito.Count </label> </span>
     </div>
 </div>

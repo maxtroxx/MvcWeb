@@ -8,13 +8,15 @@
 </div>
 
 <div class="container">
-    <h1 class="bg-primary img-rounded text-center">PointerSkins</h1>
+    <div >
+        <img src="https://images.cooltext.com/5608714.png" />
+    </div> <br />
     <div class="row">
-        <h2>Destacado</h2>
+       <h2 style="color: white;">Destacado</h2>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <div class="container-fluid">
 
-            <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:1110px;margin:auto;">
+            <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:950px;margin:auto;">
 
                 <ol class="carousel-indicators">
                     <li data-target="#my-pics" data-slide-to="0" class="active"></li>
@@ -30,35 +32,35 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://fpschampion.com/wp-content/uploads/2022/04/Glitchpop-Skin-1024x359.jpg" alt="phantom glitchpop">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://pbs.twimg.com/media/EtJOnxpXEAALHhz.jpg:large" alt="phantom glitchpop">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159054/prime_phantom_xdd.jpg" alt="phantom prime">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://cdn.sanity.io/images/ccckgjf9/production/a38f2dc7b13741de0ab33d69ff14fc8e6ed8ef18-1100x619.jpg?max-h=1080&max-w=1920&fit=scale&auto=format" alt="Spectre">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159057/primevandal.jpg" alt="vandal prime">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://www.gamersdecide.com/sites/default/files/authors/u159057/primevandal.jpg" alt="vandal prime">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://pbs.twimg.com/media/EtJcH-VWMAAx_6i?format=jpg&name=small" alt="vandal glitchpop">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://cdn.firstsportz.com/wp-content/uploads/2022/05/18010726/New-Project-93-1024x576.jpg" alt="vandal glitchpop">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://i.ytimg.com/vi/gnOoBAMHU-Y/maxresdefault.jpg" alt="vandal Reaver">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://i.ytimg.com/vi/gnOoBAMHU-Y/maxresdefault.jpg" alt="vandal Reaver">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://valorantstrike.com/wp-content/uploads/Valorant-RGX-11z-Pro-2-Collection-Classic-HD.jpg" alt="Classic RGX">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://valorantstrike.com/wp-content/uploads/Valorant-RGX-11z-Pro-2-Collection-Classic-HD.jpg" alt="Classic RGX">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://images.cults3d.com/g9fPoSFSnGy25Qv36WOF4v30G0E=/https://files.cults3d.com/uploaders/21595173/illustration-file/9cd781c8-388f-450e-8f51-a8bf2c7e8ed6/Valorant-Sentinels-of-Light-Collection-Sheriff-HD.jpg" alt="Sheriff Centinela">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://images.cults3d.com/g9fPoSFSnGy25Qv36WOF4v30G0E=/https://files.cults3d.com/uploaders/21595173/illustration-file/9cd781c8-388f-450e-8f51-a8bf2c7e8ed6/Valorant-Sentinels-of-Light-Collection-Sheriff-HD.jpg" alt="Sheriff Centinela">
                     </div>
 
                     <div class="item">
-                        <img class="img-responsive" style="width: 1110px;height: 300px;" src="https://valorantstrike.com/wp-content/uploads/Valorant-Gaia_s-Vengeance-Collection-Marshal-Orange.jpg" alt="Marshal arbolito">
+                        <img class="img-responsive" style="width: 1110px;height: 350px;" src="https://www.splitskins.com/uploads/1/3/3/8/133851419/svoereign-marshal-silver-ingame_orig.jpg" alt="Marshal arbolito">
                     </div>
                 </div>
 
@@ -93,7 +95,7 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-md-2" >
-                        <div class="card table-bordered text-center" style="width: 18rem; height: 250px;">
+                        <div class="card table-bordered  text-center" style="background-color:white;margin-top: 10px; width: 18rem; height: 250px;">
                             <h5 class="card-title bg-danger text-capitalize ">@Html.DisplayFor(modelItem => item.nombre)</h5>
                             <div class="card-body">
                                 <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.imagen)" />
