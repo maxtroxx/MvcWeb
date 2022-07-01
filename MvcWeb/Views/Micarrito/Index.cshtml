@@ -8,11 +8,11 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>PointerSkins</h1>
+        <h1 style="background-color:white">PointerSkins</h1>
     </div>
 
 
-    <div class="container">
+    <div class="container" style="background-color:white;">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 body-main">
                 <div class="col-md-12">
@@ -42,16 +42,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach (var item in Session["Carrito"] as List<Producto>)
                                 {
                                     <tr>
                                         <td class="col-md-3">@item.nombre</td>
-                                        <td class="col-md-3"><input type="number" id="stock" value="1" min="1" max="@item.stock" onchange="CalcularTotal(@item.Id); SumarTotal()"/></td>
+                                        <td class="col-md-3"><input type="number" id="stock" value="1" min="1" max="@item.stock" onchange="CalcularTotal(@item.Id); SumarTotal()" /></td>
                                         <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
-                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true" ></i> <p id="TotalCarrito">@item.precio.ToString("C0")</p></td>
+                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> <p id="TotalCarrito">@item.precio.ToString("C0")</p></td>
                                     </tr>
 
                                 }
+
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -83,17 +85,39 @@
                                             <strong><i class="fas fa-rupee-sign" area-hidden="true"></i></strong>
                                         </p>
                                     </td>
-                                    <td>
-                                        <input  class="btn btn-primary" type="button" onclick="SumarTotal()" value="Obtener total"/>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <td>
+                                            <input class="btn btn-primary" type="button" onclick="SumarTotal()" value="Obtener total" />
 
-                                    </td>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a class="btn btn-success" href="Account/login">Iniciar seccion</a>
+                                        </td>
+
+                                    }
+
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-12">
-                        <a href="MiCarrito/ConfirmarCompra" class="btn btn-success">Confirmar compra</a>
-                    </div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div class="col-md-12">
+                            <a href="MiCarrito/ConfirmarCompra" class="btn btn-danger">Confirmar compra</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <tr class="text-center">
+                            <td colspan="4" class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> <p id="TotalCarrito">DEBE INGRESAR SECCION PARA COMPRAR</p>
+                        </tr>
+                    }
+
+
                 </div>
             </div>
         </div>
@@ -102,9 +126,7 @@
 
 @section scripts{
     <script>
-
         function CalcularTotal(id) {
-
             var inputStock = document.getElementById("stock");
 
             axios.get('/MiCarrito/CalcularTotal?Id=' + id + "&stock=" + inputStock.value)

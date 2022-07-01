@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="text-center">Lista de productos</h2>
+<h2 class="text-center" style="background-color:white">Lista de productos</h2>
 
-<table class="table">
+<table class="table" style="background-color:white">
     <tr>
         <th class="text-center">
             @Html.DisplayNameFor(model => model.nombre)
@@ -52,5 +52,5 @@
 }
 
 </table>
-<a class="btn btn-warning" style="width:200px;" @Html.ActionLink("Crear","Create", new { @style = "text-decoration:none ;color:white;" }) </a>
+<a class="btn btn-warning" style="width:200px;" style="background-color:white" @Html.ActionLink("Crear","Create", new { @style = "text-decoration:none ;color:white;" }) </a>
 

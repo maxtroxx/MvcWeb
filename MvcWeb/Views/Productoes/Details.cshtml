@@ -4,9 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Detalles Producto</h2>
+<h2 style="display:inline;background-color:white">Detalles Producto</h2>
 
-<div>
+<div style="background-color:white;width:50%">
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -14,7 +14,7 @@
         </dt>
 
         <dd>
-            <img src="@Html.DisplayFor(model => model.imagen)" style="width: 150px; height: 100px; border-radius:4px;" />
+            <img src="@Html.DisplayFor(model => model.imagen)" style="width: 180px; height: 100px; border-radius:4px;" />
         </dd>
 
         <dt>
@@ -50,8 +50,8 @@
         </dd>
 
     </dl>
-</div>
 <p >
     <button class="btn btn-primary">@Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @style = "text-decoration:none ;color:white;" })</button>
     <button class="btn btn-danger">@Html.ActionLink("Volver", "Index", null, new { @style = "text-decoration:none ;color:white;" }) </button>
 </p>
+</div>
