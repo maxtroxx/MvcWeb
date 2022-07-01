@@ -5,9 +5,10 @@
     {
     @Html.AntiForgeryToken()
 
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right" >
+    <li><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" style="width:25px; height: 25px; position: relative; top: 12px;">
+    </li>
     <li>
-
         @Html.ActionLink("Mi Perfil ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
     </li>
     <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
