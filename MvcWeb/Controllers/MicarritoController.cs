@@ -1,6 +1,7 @@
 ﻿using MvcWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,7 +21,7 @@ namespace MvcWeb.Controllers
         {
             List<Producto> prodCarrito = (List<Producto>)Session["Carrito"];
             var prod = prodCarrito.Where(p => p.Id == id).First();
-
+            var stockRestante = prod.stock - stock;
             int total = prod.precio * stock;
             return Content(total.ToString("C0"));
         }
@@ -28,6 +29,13 @@ namespace MvcWeb.Controllers
         public ActionResult ConfirmarCompra()
         {
             return View();
+        }
+        public ActionResult ActualizarStock(int id, int cantidad)
+        {
+            List<Producto> prodCarrito = (List<Producto>)Session["Carrito"];
+            var prod = prodCarrito.Where(p => p.Id == id).First();
+            int stockRestante = prod.stock - cantidad;
+            return Content(stockRestante.ToString());
         }
         // GET: MiCarrito/Details/5
         public ActionResult Details(int id)
