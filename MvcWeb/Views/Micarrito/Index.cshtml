@@ -8,7 +8,7 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>Invoice Template  </h1>
+        <h1>PointerSkins</h1>
     </div>
 
 
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-4">
-                            
+
                         </div>
                         <div class="col-md-8 text-right">
                             <p>PointerSkins@gmail.com</p>
@@ -44,66 +44,55 @@
                             <tbody>
                                 @foreach (var item in Session["Carrito"] as List<Producto>)
                                 {
-                                <tr>
-                                    <td class="col-md-3">@item.nombre</td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.precio </td>
-                                </tr>
-                                  
+                                    <tr>
+                                        <td class="col-md-3">@item.nombre</td>
+                                        <td class="col-md-3"><input type="number" id="stock" value="1" min="1" max="@item.stock" onchange="CalcularTotal(@item.Id); SumarTotal()"/></td>
+                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> @item.stock </td>
+                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true" ></i> <p id="TotalCarrito">@item.precio.ToString("C0")</p></td>
+                                    </tr>
+
                                 }
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td class="text-right">
-                                    <p>
-                                        <strong>Total:</strong>
-                                    </p>
-                                    <p>
-                                        <strong>Total Amount: </strong>
-                                    </p>
-                                    <p>
-                                        <strong>Discount: </strong>
-                                    </p>
-                                    <p>
-                                        <strong>Payable Amount: </strong>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        @foreach (var item in Session["Carrito"] as List<Producto>)
-                                        {
-                                            var Total = 0;
-                                            var precio = 0;
-                                            precio = item.precio;
-                                            Total = Total + precio;
-                                            <strong><i class="fas fa-rupee-sign" area-hidden="true">@Total</i></strong>
-                                        }
-                                    </p>
-                                    <p>
-                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong>
-                                    </p>
-                                    <p>
-                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong>
-                                    </p>
-                                    <p>
-                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong>
-                                    </p>
-                                </td>
-                            </tr>
-                                <tr style="color: #F81D2D;">
-                                    <td class="text-right"><h4><strong>Total:</strong></h4></td>
-                                    <td class="text-left"><h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4></td>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <p>
+                                            <strong>Total:</strong>
+                                        </p>
+                                        <p>
+                                            <strong></strong>
+                                        </p>
+                                        <p>
+                                            <strong></strong>
+                                        </p>
+                                        <p>
+                                            <strong></strong>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"><p style="position:relative;bottom:10px;" id="total"> </p></i></strong>
+                                        </p>
+                                        <p>
+                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> </strong>
+                                        </p>
+                                        <p>
+                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> </strong>
+                                        </p>
+                                        <p>
+                                            <strong><i class="fas fa-rupee-sign" area-hidden="true"></i></strong>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <input  class="btn btn-primary" type="button" onclick="SumarTotal()" value="Obtener total"/>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div>
-                        <div class="col-md-12">
-                            <p><b>Date :</b> ??/??/????</p>
-                            <br />
-                            <p><b>Signature</b></p>
-                        </div>
+                    <div class="col-md-12">
+                        <a href="MiCarrito/ConfirmarCompra" class="btn btn-success">Confirmar compra</a>
                     </div>
                 </div>
             </div>
@@ -111,4 +100,35 @@
     </div>
 </div>
 
+@section scripts{
+    <script>
+
+        function CalcularTotal(id) {
+
+            var inputStock = document.getElementById("stock");
+
+            axios.get('/MiCarrito/CalcularTotal?Id=' + id + "&stock=" + inputStock.value)
+                    .then(function (response) {
+                        var divCarrito = document.getElementById("TotalCarrito");
+                        divCarrito.innerHTML = response.data;
+                    })
+        }
+        function SumarTotal() {
+            var valores = document.getElementById("TotalCarrito");
+            console.log(valores.innerHTML);
+            document.getElementById("total").value = valores.innerHTML;
+
+            var totalInp = $('[id="TotalCarrito"]');
+            console.log(totalInp[0].innerHTML.slice(1).replace(/[$.]/g, ''))
+            var total = 0;
+            for (var i = 0; i < totalInp.length; i++) {
+                total = total + parseInt(totalInp[i].innerHTML.slice(1).replace(/[$.]/g, ''));
+            }
+            console.log(total)
+            document.getElementById("total").innerHTML = total
+            
+        }
+
+    </script>
+}
 

@@ -18,15 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("PointerSkins", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("PointerSkins", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" ,@style = "font-size:30px;"})
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Mi carrito", "Index", "MiCarrito")</li>
+                    <li>@Html.ActionLink("Inicio", "Index", "Home",null, new {@style = "font-size:20px;"})</li>
+                    <li>@Html.ActionLink("Mi carrito", "Index", "MiCarrito", null, new { @style = "font-size:20px;" })</li>
                     @if (Request.IsAuthenticated && User.Identity.Name == "luis.valenzuela.tablet@gmail.com")
                     {
-                        <li>@Html.ActionLink("productos", "Index", "Productoes")</li>
+                        <li>@Html.ActionLink("Productos", "Index", "Productoes", null, new { @style = "font-size:20px;" })</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

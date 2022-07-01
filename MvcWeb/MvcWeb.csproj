@@ -259,6 +259,7 @@
     <Content Include="Views\Productoes\Index.cshtml" />
     <Content Include="Views\Home\_carrito.cshtml" />
     <Content Include="Views\Micarrito\Index.cshtml" />
+    <Content Include="Views\Micarrito\ConfirmarCompra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206280525461_InitialCreate.resx">

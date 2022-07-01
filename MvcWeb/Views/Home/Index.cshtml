@@ -92,8 +92,8 @@
             <div class="col-md-12">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-2" style="height:250px;">
-                        <div class="card table-bordered text-center" style="width: 18rem;">
+                    <div class="col-md-2" >
+                        <div class="card table-bordered text-center" style="width: 18rem; height: 250px;">
                             <h5 class="card-title bg-danger text-capitalize ">@Html.DisplayFor(modelItem => item.nombre)</h5>
                             <div class="card-body">
                                 <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.imagen)" />
@@ -102,7 +102,7 @@
                                     <Span class="text-uppercase text-info bg-success">Precio:</Span>@Html.DisplayFor(modelItem => item.precio)
                                     <Span class="text-uppercase text-info bg-success">Detalles:</Span>@Html.DisplayFor(modelItem => item.descripcion)
                                 </p>
-                                <button onclick="AddToCart(@item.Id)" class="btn btn-warning">Añadir al carrito</button>
+                                <button  style="position:absolute;bottom:0;right:10%;" onclick="AddToCart(@item.Id)" class="btn btn-warning">Añadir al carrito</button>
                             </div>
                         </div>
 

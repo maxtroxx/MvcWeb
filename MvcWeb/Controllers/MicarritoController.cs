@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,26 @@ namespace MvcWeb.Controllers
 {
     public class MiCarritoController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: MiCarrito
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult CalcularTotal(int id ,int stock)
+        {
+            List<Producto> prodCarrito = (List<Producto>)Session["Carrito"];
+            var prod = prodCarrito.Where(p => p.Id == id).First();
+
+            int total = prod.precio * stock;
+            return Content(total.ToString("C0"));
+        }
+
+        public ActionResult ConfirmarCompra()
+        {
+            return View();
+        }
         // GET: MiCarrito/Details/5
         public ActionResult Details(int id)
         {
